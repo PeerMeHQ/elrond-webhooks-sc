@@ -1,0 +1,29 @@
+[package]
+name = "webhooks-wasm"
+version = "1.0.0"
+authors = ["Micha Vie <micha@freeiam.com>"]
+edition = "2018"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release]
+codegen-units = 1
+opt-level = "z"
+lto = true
+debug = false
+panic = "abort"
+
+[dependencies.webhooks]
+path = ".."
+
+[dependencies.elrond-wasm-node]
+version = "0.22.10"
+
+[dependencies.elrond-wasm-output]
+version = "0.22.10"
+features = ["wasm-output-mode"]
+
+[workspace]
+members = ["."]

@@ -1,0 +1,43 @@
+{
+  "steps": [
+    {
+      "step": "externalSteps",
+      "path": "_init.scen.json"
+    },
+    {
+      "step": "scCall",
+      "tx": {
+        "from": "address:main",
+        "to": "sc:main",
+        "function": "deposit",
+        "arguments": [],
+        "gasLimit": "5,000,000",
+        "gasPrice": "0",
+        "value": "5"
+      },
+      "expect": {
+        "out": [],
+        "status": "",
+        "logs": [],
+        "gas": "*",
+        "refund": "*"
+      }
+    },
+    {
+      "step": "checkState",
+      "accounts": {
+        "address:main": {
+          "nonce": "*",
+          "balance": "999995",
+          "storage": {},
+          "code": ""
+        },
+        "sc:main": {
+          "nonce": "0",
+          "balance": "5",
+          "code": "file:../output/webhooks.wasm"
+        }
+      }
+    }
+  ]
+}
